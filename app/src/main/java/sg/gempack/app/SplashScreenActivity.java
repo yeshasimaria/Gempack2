@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseUser;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
 
                 //If the user is logged in
-                if (GempackApplication.getMainGempackUser().getParseUser() != null && ParseFacebookUtils.isLinked(GempackApplication.getMainGempackUser().getParseUser())){
+                if (ParseUser.getCurrentUser() != null && ParseFacebookUtils.isLinked(ParseUser.getCurrentUser())){
                     GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
                 } else {
                     LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
@@ -41,7 +42,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
 
             }
-        }, 200);
+        }, 700);
     }
 
     @Override
