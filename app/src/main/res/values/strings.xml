@@ -12,7 +12,9 @@
     <string name="profile_name">ProfileName</string>
     <string name="bar_placeholder">Insert Bar</string>
     <string name="email_name">something@something.com</string>
-    <string name="profile_requests">ProfileName's Requests</string>
+    <string name="profile_requests">ProfileName Requests</string>
+    <string name="large_text">Largetext</string>
+
 
 
 </resources>
