@@ -17,7 +17,10 @@
     <string name="email_name">something@something.com</string>
     <string name="profile_requests">ProfileName Requests</string>
     <string name="large_text">Largetext</string>
-
+    <string name="select_vendor">Vendor:</string>
+    <string name="select_amt">Amount Needed:</string>
+    <string name="select_meeting_pt">Meeting Point:</string>
+    <string name="select_submit">Submit Gem Request</string>
 
     <string name="toast_back_press">Press back again to quit.</string>
 
