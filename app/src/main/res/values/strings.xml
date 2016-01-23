@@ -8,6 +8,13 @@
     <string name="title_activity_log_in_screen">LogInScreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="profile_name">ProfileName</string>
+    <string name="bar_placeholder">Insert Bar</string>
+    <string name="email_name">something@something.com</string>
+    <string name="profile_requests">ProfileName Requests</string>
+    <string name="large_text">Largetext</string>
+
 
 
 </resources>
