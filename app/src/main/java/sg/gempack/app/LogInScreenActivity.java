@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -24,7 +26,7 @@ import sg.gempack.app.Utilities.PushNotificationManagement;
 public class LogInScreenActivity extends AppCompatActivity {
 
 
-    
+    Button logInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +34,19 @@ public class LogInScreenActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_log_in_screen);
 
+        logInButton = (Button) findViewById(R.id.log_in_facebook_button);
+        logInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logInFunction();
+            }
+        });
 
 
     }
 
 
-    private void LogInFunction (){
+    private void logInFunction (){
         final Dialog progressDialog = ProgressDialog.show(this, "", "Logging in...", true);
 
         //List of permissions you need form user's facebook account.
@@ -51,17 +60,17 @@ public class LogInScreenActivity extends AppCompatActivity {
                 GempackApplication.getMainGempackUser().saveFacebookInfoToParse(LogInScreenActivity.this, new GempackUser.getFacebookInfoCallback() {
                     @Override
                     public void onSaveComplete() {
-
+                        GempackFeedActivity.openGempackFeedActivity(LogInScreenActivity.this);
                     }
 
                     @Override
                     public void noNeedToSave() {
-
+                        GempackFeedActivity.openGempackFeedActivity(LogInScreenActivity.this);
                     }
 
                     @Override
                     public void somethingWentWrong() {
-
+                        //do nothing
                     }
                 });
 
