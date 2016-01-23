@@ -28,11 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //TODO: Delete below
-                UserProfileActivity.openUserProfileActivity(SplashScreenActivity.this);
-
-                //TODO: Uncomment
-                //LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
+                LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
 
             }
         }, 200);
