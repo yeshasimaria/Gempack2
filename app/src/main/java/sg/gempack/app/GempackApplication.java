@@ -33,11 +33,21 @@ import sg.gempack.app.Classes.GempackUser;
 public class GempackApplication extends MultiDexApplication {
 
 
-
-
     private static LruCache<String, GempackUser> gempackUserLruCache;
     private static LruCache<String, GempackPack> gempackPackLruCache;
     private static LruCache<String, GempackGem> gempackGemLruCache;
+
+    public static LruCache<String, GempackUser> getGempackUserLruCache() {
+        return gempackUserLruCache;
+    }
+
+    public static LruCache<String, GempackPack> getGempackPackLruCache() {
+        return gempackPackLruCache;
+    }
+
+    public static LruCache<String, GempackGem> getGempackGemLruCache() {
+        return gempackGemLruCache;
+    }
 
     @Override
     public void onCreate() {
@@ -68,6 +78,7 @@ public class GempackApplication extends MultiDexApplication {
         gempackUserLruCache = new LruCache<>(lruCacheSizeSmall); //Store with otterParseUserID / Object ID, except main Otter User
         gempackPackLruCache = new LruCache<>(lruCacheSizeBig);
         gempackGemLruCache = new LruCache<>(lruCacheSizeBig);
+
 
         //DISK LRU CACHE with RESERVOIR
         try {

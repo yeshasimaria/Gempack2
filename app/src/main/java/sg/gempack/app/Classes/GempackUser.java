@@ -7,14 +7,17 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.anupcowkur.reservoir.Reservoir;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -27,6 +30,9 @@ import org.json.JSONObject;
 
 import com.parse.ParseException;
 
+import sg.gempack.app.GempackApplication;
+import sg.gempack.app.R;
+import sg.gempack.app.Utilities.ParseACLHelper;
 import sg.gempack.app.Utilities.ParseExceptionHandler;
 
 /**
@@ -41,17 +47,42 @@ public class GempackUser implements Parcelable {
 
 
     private static final String GEMPACK_USER = "gempackUser"; //not to be used for ParseUser.
-
     public static String getGempackUserCode() {
         return GEMPACK_USER;
     }
 
-    private static final String PARSE_USER = "user"; //not to be used for ParseUser.
+    private static final String PARSE_USER = "user"; //to be used for ParseUser.
     public static String getParseUserCode() {
         return GEMPACK_USER;
     }
 
+
+
     //CONSTRUCTORS
+    public static GempackUser constructGempackUser(ParseUser parseUser, Boolean skipCache){
+        if(skipCache){
+            return new GempackUser(parseUser);
+        } else {
+            GempackUser user = GempackApplication.getGempackUserLruCache().get(parseUser.getObjectId());
+            if (user == null){
+                try {
+                    if (Reservoir.contains(GEMPACK_USER + parseUser.getObjectId())){
+                        user = Reservoir.get(GEMPACK_USER + parseUser.getObjectId(), GempackUser.class);
+                    } else {
+                        user = new GempackUser(parseUser);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    user = new GempackUser(parseUser);
+                }
+
+            }
+
+            return user;
+        }
+    }
+
+
     public GempackUser(ParseUser parseUser){
         extractParseUserInformation(parseUser);
     }
@@ -59,9 +90,7 @@ public class GempackUser implements Parcelable {
 
     public GempackUser(String parseUserID){
         this.parseUserID = parseUserID;
-
     }
-
 
 
     private ParseUser parseUser;
@@ -86,12 +115,6 @@ public class GempackUser implements Parcelable {
      * Constructs permission for the current parse user Permission
      * @return parseUserPermissions
      */
-    public ParseACL setParseUserPermissions(){
-        ParseACL parseUserPermissions = new ParseACL(parseUser);
-        parseUserPermissions.setPublicReadAccess(true);
-        parseUserPermissions.setPublicWriteAccess(false);
-        return parseUserPermissions;
-    }
 
 
 
@@ -159,7 +182,7 @@ public class GempackUser implements Parcelable {
                                     if (jsonObject.has("verified")) parseUser.put(FACEBOOK_VERIFIED, jsonObject.getBoolean("verified"));
                                     if (jsonObject.has("email")) parseUser.put(EMAIL, jsonObject.getString("email"));
 
-                                    parseUser.setACL(setParseUserPermissions());
+                                    parseUser.setACL(ParseACLHelper.setParseObjectPermissions());
 
                                     parseUser.saveInBackground(new SaveCallback() {
 
@@ -367,6 +390,17 @@ public class GempackUser implements Parcelable {
     }
 
 
+
+    //CACHE CODE
+    private void saveToCache(String objectID, Context context){
+        GempackApplication.getGempackUserLruCache().put(objectID, GempackUser.this);
+        Reservoir.putAsync(GEMPACK_USER + objectID, GempackUser.this, null);
+        if (ParseUser.getCurrentUser().getObjectId().equals(objectID)){
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putString(GEMPACK_USER, new Gson().toJson(GempackUser.this)).apply();
+        }
+    }
+
+    //PARCELABLE
     protected GempackUser(Parcel in) {
         fullName = in.readString();
         emailAddress = in.readString();
@@ -374,7 +408,6 @@ public class GempackUser implements Parcelable {
         facebookID = in.readString();
         phoneNumber = in.readString();
         profilePhotoBitmap = in.readParcelable(Bitmap.class.getClassLoader());
-        mCancelledProfilePicCount = in.readInt();
     }
 
     public static final Creator<GempackUser> CREATOR = new Creator<GempackUser>() {
@@ -389,7 +422,6 @@ public class GempackUser implements Parcelable {
         }
     };
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -403,6 +435,7 @@ public class GempackUser implements Parcelable {
         dest.writeString(facebookID);
         dest.writeString(phoneNumber);
         dest.writeParcelable(profilePhotoBitmap, flags);
-        dest.writeInt(mCancelledProfilePicCount);
     }
+
+
 }
