@@ -48,8 +48,8 @@ public class GempackPackCard extends CardView {
 
     private void update() {
         //TODO
-        //remainingAmount.setText();
-        //endDate.setText();
+        remainingAmount.setText(String.format("%.2f", gempackPack.getRemainingAmount()));
+        endDate.setText(gempackPack.getStringForDate(gempackPack.getDeadlineTime()));
         //vendor.setText();
         collectionPoint.setText(gempackPack.getCollectionPoint());
     }
