@@ -36,4 +36,13 @@ dependencies {
     compile 'com.parse:parse-android:1.10.3'
     compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
     compile 'com.parse.bolts:bolts-android:1.2.1'
+
+    //Date Time
+    compile 'joda-time:joda-time:2.7'
+
+
+    //For Caching
+    compile 'com.jakewharton:disklrucache:2.0.2'
+    compile 'com.anupcowkur:reservoir:2.0'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
 }

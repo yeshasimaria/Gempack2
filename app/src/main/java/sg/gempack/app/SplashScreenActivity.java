@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.parse.ParseFacebookUtils;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     TextView versionNameText;
@@ -29,7 +31,14 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
+                //If the user is logged in
+                if (GempackApplication.getMainGempackUser().getParseUser() != null && ParseFacebookUtils.isLinked(GempackApplication.getMainGempackUser().getParseUser())){
+                    GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
+                } else {
+                    LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
+                }
+
+
 
             }
         }, 200);
