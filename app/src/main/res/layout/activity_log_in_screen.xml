@@ -19,6 +19,7 @@
             android:layout_weight="1"
             android:text="LOG IN WITH FACEBOOK"
             android:backgroundTint="#3b5998"
+
             android:background="@drawable/ripple_facebook"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"

@@ -9,6 +9,15 @@
     <string name="facebook_app_secret">77de77c340dbfde39888239e55d7cf43</string>
 
     <string name="title_activity_log_in_screen">LogInScreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="profile_name">ProfileName</string>
+    <string name="bar_placeholder">Insert Bar</string>
+    <string name="email_name">something@something.com</string>
+    <string name="profile_requests">ProfileName Requests</string>
+    <string name="large_text">Largetext</string>
+
 
     <string name="toast_back_press">Press back again to quit.</string>
 
