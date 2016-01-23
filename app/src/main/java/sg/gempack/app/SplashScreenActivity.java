@@ -1,13 +1,9 @@
 package sg.gempack.app;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -27,6 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         versionNameText = (TextView) findViewById(R.id.splash_version_name);
         versionNameText.setText(BuildConfig.VERSION_NAME);
+        Context context = getApplicationContext();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -34,10 +31,12 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 //If the user is logged in
                 if (ParseUser.getCurrentUser() != null && ParseFacebookUtils.isLinked(ParseUser.getCurrentUser())){
-                    GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
+                    //GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
+                    //TODO change to GempackFeedActivity
+
                 } else {
                     //TODO: revert splash entry
-                    NewGemRequestActivity.openNewGemActivity(SplashScreenActivity.this);
+                    //NewGemRequestActivity.openNewGemActivity(SplashScreenActivity.this);
                     //LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
                 }
 
