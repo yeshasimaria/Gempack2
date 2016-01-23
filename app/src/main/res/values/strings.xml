@@ -23,5 +23,6 @@
     <string name="select_submit">Submit Gem Request</string>
 
     <string name="toast_back_press">Press back again to quit.</string>
+    <string name="title_activity_pack_details">PackDetailsActivity</string>
 
 </resources>

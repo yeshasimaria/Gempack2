@@ -1,6 +1,7 @@
 package sg.gempack.app.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import sg.gempack.app.Cards.GempackPackCard;
 import sg.gempack.app.Classes.GempackPack;
 import sg.gempack.app.R;
+import sg.gempack.app.PackDetailsActivity;
 
 /**
  * Created by Yesha on 1/23/2016.
@@ -72,15 +74,9 @@ public static class GempackPackViewHolder extends RecyclerView.ViewHolder implem
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            //case R.id.paid:
-            //String[] params = new String[1];
-            //break;
-            //case R.id.delete:
-            //String[] params1 = new String[1];
-            default:
-                break;
-        }
+        Intent intent = new Intent(ctx, PackDetailsActivity.class);
+        intent.putExtra(GempackPack.getGempackPackCode(), cv.getPack());
+        ctx.startActivity(intent);
     }
 }
 }

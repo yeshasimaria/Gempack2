@@ -54,5 +54,9 @@ public class GempackPackCard extends CardView {
         collectionPoint.setText(gempackPack.getCollectionPoint());
     }
 
+    public GempackPack getPack() {
+        return this.gempackPack;
+    }
+
 
 }
