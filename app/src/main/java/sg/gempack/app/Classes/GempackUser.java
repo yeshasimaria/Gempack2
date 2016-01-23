@@ -41,6 +41,7 @@ public class GempackUser implements Parcelable {
 
 
     private static final String GEMPACK_USER = "gempackUser"; //not to be used for ParseUser.
+
     public static String getGempackUserCode() {
         return GEMPACK_USER;
     }
@@ -167,6 +168,11 @@ public class GempackUser implements Parcelable {
 
                                             new ParseExceptionHandler(context).processPotentialParseExceptions(e, "get your information from Facebook", new ParseExceptionHandler.ExceptionCallback() {
                                                 @Override
+                                                public void doFirst() {
+                                                    loadingDialog.dismiss();
+                                                }
+
+                                                @Override
                                                 public void retryLastStep() {
                                                     saveFacebookInfoToParse(context, callback);
                                                 }
@@ -194,7 +200,7 @@ public class GempackUser implements Parcelable {
 
                                                 @Override
                                                 public void finallyDo() {
-                                                    loadingDialog.dismiss();
+                                                    //do nothing
                                                 }
                                             });
 
@@ -251,8 +257,8 @@ public class GempackUser implements Parcelable {
         if (parseUser.has(FACEBOOK_VERIFIED)) this.facebookVerified = parseUser.getBoolean(FACEBOOK_VERIFIED);
     }
 
-    public void savePhoneNumber(Context context){
-
+    public void savePhoneNumberAndEmail(Context context){
+        //TODO
     }
 
     private int mCancelledProfilePicCount = 0;
@@ -361,7 +367,27 @@ public class GempackUser implements Parcelable {
     }
 
 
+    protected GempackUser(Parcel in) {
+        fullName = in.readString();
+        emailAddress = in.readString();
+        parseUserID = in.readString();
+        facebookID = in.readString();
+        phoneNumber = in.readString();
+        profilePhotoBitmap = in.readParcelable(Bitmap.class.getClassLoader());
+        mCancelledProfilePicCount = in.readInt();
+    }
 
+    public static final Creator<GempackUser> CREATOR = new Creator<GempackUser>() {
+        @Override
+        public GempackUser createFromParcel(Parcel in) {
+            return new GempackUser(in);
+        }
+
+        @Override
+        public GempackUser[] newArray(int size) {
+            return new GempackUser[size];
+        }
+    };
 
 
     @Override
@@ -371,6 +397,12 @@ public class GempackUser implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(fullName);
+        dest.writeString(emailAddress);
+        dest.writeString(parseUserID);
+        dest.writeString(facebookID);
+        dest.writeString(phoneNumber);
+        dest.writeParcelable(profilePhotoBitmap, flags);
+        dest.writeInt(mCancelledProfilePicCount);
     }
 }

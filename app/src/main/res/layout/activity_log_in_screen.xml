@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     tools:context="sg.gempack.app.LogInScreenActivity"
     android:fitsSystemWindows="true"
-    android:background="@drawable/gempack_login_background">
+    android:background="@drawable/gempack_login_background"
+    android:id="@+id/log_in_layout">
 
     <RelativeLayout
         android:layout_width="match_parent"

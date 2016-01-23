@@ -23,7 +23,7 @@ public class ParseExceptionHandler {
         Context mContext;
 
         public interface ExceptionCallback{
-
+            void doFirst();
             void retryLastStep();
             void abortLastStep();
             void ranSuccessfully();
@@ -33,7 +33,7 @@ public class ParseExceptionHandler {
         public void processPotentialParseExceptions(ParseException e, String userAction, final ExceptionCallback callback) {
 
             // "userAction" --> Something went wrong while... INSERT TEXT HERE ...Please try again.
-
+            callback.doFirst();
 
             if (e == null) {
                 callback.ranSuccessfully();

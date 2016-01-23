@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="gempack_orange">#ff5500</color>
+
+    <color name="grey_translucent">#CC2F2C29</color>
+    <color name="grey_transparent">#1A2F2C29</color>
 </resources>
