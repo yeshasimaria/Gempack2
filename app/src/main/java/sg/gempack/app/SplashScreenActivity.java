@@ -36,7 +36,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (ParseUser.getCurrentUser() != null && ParseFacebookUtils.isLinked(ParseUser.getCurrentUser())){
                     GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
                 } else {
-                    LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
+                    //TODO: revert splash entry
+                    NewGemRequestActivity.openNewGemActivity(SplashScreenActivity.this);
+                    //LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
                 }
 
 

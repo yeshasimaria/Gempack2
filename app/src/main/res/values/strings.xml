@@ -21,6 +21,11 @@
     <string name="select_amt">Amount Needed:</string>
     <string name="select_meeting_pt">Meeting Point:</string>
     <string name="select_submit">Submit Gem Request</string>
+    <string name="select_benefit">Benefits:</string>
+    <string name="select_description">Description:</string>
+    <string name="select_Date">Description:</string>
+    <string name="spinner_title">Choose Vendor</string>
+    pick_date
 
     <string name="toast_back_press">Press back again to quit.</string>
     <string name="title_activity_pack_details">PackDetailsActivity</string>
