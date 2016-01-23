@@ -13,6 +13,8 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -177,11 +179,28 @@ public class GempackPack implements Parcelable{
     }
 
     public void loadPackDetailsFromParse(){
-        
+
     }
 
-    //Getters
 
+    public interface GetGemsCallback{
+        void successfullyGetGems(List<GempackGem> listOfGems);
+        void somethingWentWrong();
+    }
+
+    public void getGemsFromParse(Context context, GetGemsCallback callback){
+        callback.successfullyGetGems(null);
+    }
+
+
+    //Helper Function
+    public String getStringForDate (DateTime dateTime){
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("d MMMM y");
+        return formatter.print(dateTime);
+    }
+
+
+    //Getters
     public String getDescriptionText() {
         return descriptionText;
     }
@@ -224,6 +243,17 @@ public class GempackPack implements Parcelable{
 
     public Double getCollectedAmount() {
         return collectedAmount;
+    }
+
+    public Double getRemainingAmount(){
+
+        Double remainingAmount = requiredAmount - collectedAmount;
+
+        if (remainingAmount < 0.0){
+            return 0.0;
+        } else {
+            return remainingAmount;
+        }
     }
 
     public String getBenefitsText() {

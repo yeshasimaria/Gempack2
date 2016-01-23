@@ -15,4 +15,8 @@ public class GempackGem {
     GempackUser gemOwner;
     String ownerID;
 
+
+    private static final String PRODUCT_NAME = "productName";
+    private static final String PRODUCT_CODE = "productCode";
+
 }
