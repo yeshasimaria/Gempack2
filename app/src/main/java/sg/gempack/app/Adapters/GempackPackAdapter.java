@@ -70,6 +70,7 @@ public static class GempackPackViewHolder extends RecyclerView.ViewHolder implem
         super(itemView);
         ctx = context;
         cv = (GempackPackCard) itemView.findViewById(R.id.gempackpack_card_item);
+        itemView.setOnClickListener(this);
     }
 
     @Override

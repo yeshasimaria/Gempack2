@@ -397,6 +397,10 @@ public class GempackPack implements Parcelable{
         return packOwnerID;
     }
 
+    public String getVendorName() {
+        return vendorName;
+    }
+
     public String getCollectionPoint() {
         return collectionPoint;
     }
