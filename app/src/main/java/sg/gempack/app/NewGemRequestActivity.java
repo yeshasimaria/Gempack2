@@ -1,10 +1,9 @@
 package sg.gempack.app;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -49,7 +48,7 @@ public class NewGemRequestActivity extends AppCompatActivity {
 
         context = this.getApplicationContext();
         // Spinner element
-         spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
         meetingPt = (EditText) findViewById(R.id.editmeeting);
         amt = (EditText) findViewById(R.id.editamount);
         description = (EditText) findViewById(R.id.editdescription);

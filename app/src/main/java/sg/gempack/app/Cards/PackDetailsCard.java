@@ -60,7 +60,7 @@ public class PackDetailsCard extends CardView {
         collectionPoint.setText(gempackPack.getCollectionPoint());
         description.setText(gempackPack.getDescriptionText());
         benefits.setText(gempackPack.getBenefitsText());
-        progressBar.setProgress(50);
+        progressBar.setProgress((int)(gempackPack.getCollectedAmount()/gempackPack.getRequiredAmount()));
     }
 
     public GempackPack getPack() {

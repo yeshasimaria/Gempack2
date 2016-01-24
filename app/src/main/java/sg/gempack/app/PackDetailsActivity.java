@@ -1,6 +1,5 @@
 package sg.gempack.app;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import sg.gempack.app.Cards.PackDetailsCard;
 import sg.gempack.app.Classes.GempackPack;
@@ -22,7 +22,7 @@ public class PackDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pack_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.gempack_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("New Pack");
+        getSupportActionBar().setTitle("Pack Details");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gempackPack = getIntent().getParcelableExtra(GempackPack.getGempackPackCode());
@@ -54,4 +54,8 @@ public class PackDetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void addGem (View v) {
+        Intent i = new Intent(this, AddGemActivity.class);
+        startActivity(i);
+    }
 }
