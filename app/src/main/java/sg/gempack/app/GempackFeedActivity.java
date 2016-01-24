@@ -52,6 +52,7 @@ public class GempackFeedActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.gempack_toolbar);
         setSupportActionBar(toolbar);
 
+
         container = (RelativeLayout) findViewById(R.id.container);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
@@ -109,6 +110,13 @@ public class GempackFeedActivity extends AppCompatActivity {
         if (id == R.id.action_addpack) {
             NewGemRequestActivity.openNewGemActivity(this);
         }
+        if (id == R.id.action_myprofile) {
+            UserProfileActivity.openUserProfileActivity(this);
+        }
+
+
+
+
 
         return super.onOptionsItemSelected(item);
     }

@@ -2,7 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="sg.gempack.app.GempackFeedActivity">
-
+    <item
+        android:id="@+id/action_back"
+        android:orderInCategory="400"
+        android:title="Back"
+        app:showAsAction="always"
+        ></item>
     <item
         android:id="@+id/action_addpack"
         android:orderInCategory="300"
