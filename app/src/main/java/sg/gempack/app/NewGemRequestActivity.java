@@ -27,6 +27,8 @@ public class NewGemRequestActivity extends AppCompatActivity {
     Context context;
     private EditText meetingPt, amt, benefits, description;
     private DatePicker datePicker;
+    private String meet, amount, benefitString, descript, vendor;
+    private Spinner spinner;
     private TimePicker timePicker;
     private DateTime date;
     private Button next;
@@ -43,23 +45,23 @@ public class NewGemRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_gem_request);
         context = this.getApplicationContext();
         // Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+         spinner = (Spinner) findViewById(R.id.spinner);
         meetingPt = (EditText) findViewById(R.id.editmeeting);
         amt = (EditText) findViewById(R.id.editamount);
         description = (EditText) findViewById(R.id.editdescription);
         benefits= (EditText) findViewById(R.id.editbenefits);
         datePicker =  (DatePicker) findViewById(R.id.datePicker);
 
-
+        date = new DateTime();
         //date = new DateTime(1995,01, 01, 23,59);
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // On selecting a spinner item
-                String item = parent.getItemAtPosition(position).toString();
+                vendor = parent.getItemAtPosition(position).toString();
 
                 // Showing selected spinner item
-                Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+                Toast.makeText(parent.getContext(), "Selected: " + vendor, Toast.LENGTH_LONG).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -79,21 +81,34 @@ public class NewGemRequestActivity extends AppCompatActivity {
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
+        vendor = "Amazon";
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-        Log.d("NewGem", (String.valueOf(datePicker.getDayOfMonth())));
-        date = new DateTime();
-        //date = new DateTime(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth(), 0,0);
+
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                date = new DateTime(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth(), 0,0);
+            }
+        });
+
         next = (Button) findViewById(R.id.submitBtn);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GMPP = new GempackPack();
-                GMPP.savePackDetailsParse(context, meetingPt.toString(), date, Double.valueOf(amt.getText().toString()), benefits.toString(), description.toString(), "",new GempackPack.OnPackCreatedCallback() {
+                Log.d("NewGem1", meetingPt.getText().toString());
+                Log.d("NewGem2", benefits.getText().toString());
+                Log.d("NewGem3", amt.getText().toString());
+                double price = Double.parseDouble(amt.getText().toString());
+
+                meet = meetingPt.getText().toString();
+                benefitString = benefits.getText().toString();
+                descript = description.getText().toString();
+                GMPP.savePackDetailsParse(NewGemRequestActivity.this, meet, date, price, benefitString, descript, vendor,new GempackPack.OnPackCreatedCallback() {
                     @Override
                     public void createdSuccessfully(GempackPack gempackPack) {
                         //TODO: CreateGem

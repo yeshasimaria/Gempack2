@@ -61,7 +61,8 @@
         <activity
             android:name=".PackDetailsActivity"
             android:label="@string/title_activity_pack_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddGemActivity"></activity>
     </application>
 
 </manifest>

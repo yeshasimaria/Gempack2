@@ -25,7 +25,10 @@
     <string name="select_description">Description:</string>
     <string name="select_Date">Description:</string>
     <string name="spinner_title">Choose Vendor</string>
-    pick_date
+    <string name="gem_submit">Submit Gem</string>
+    <string name="gem_amt">Amount Needed:</string>
+    <string name="gem_code">Product code:</string>
+    <string name="gem_name">Product name:</string>
 
     <string name="toast_back_press">Press back again to quit.</string>
     <string name="title_activity_pack_details">PackDetailsActivity</string>

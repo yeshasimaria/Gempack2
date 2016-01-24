@@ -37,7 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 } else {
                     //TODO: revert splash entry
                     //NewGemRequestActivity.openNewGemActivity(SplashScreenActivity.this);
-                    //LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
+                    LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
                 }
 
 
