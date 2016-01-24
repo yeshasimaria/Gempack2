@@ -258,7 +258,7 @@ public class GempackPack implements Parcelable{
     }
     public void getGemsFromParse(final Context context, final GetGemsCallback callback){
 
-        final ParseQuery<ParseObject> query = ParseQuery.getQuery("otterBicycle");
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery(GempackGem.getGempackGem());
         query.whereEqualTo(GEMPACK_PACK, gempackPackParseObject);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -290,6 +290,53 @@ public class GempackPack implements Parcelable{
                         }
 
                         callback.successfullyGetGems(gemsInPack);
+                    }
+
+                    @Override
+                    public void finallyDo() {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public interface GetPacksCallback{
+        void successfullyGetPacks(ArrayList<GempackPack> listOfGems);
+        void somethingWentWrong();
+    }
+    public static void getPacksFromParse(final Context context, final GetPacksCallback callback){
+        final ParseQuery<ParseObject> query = ParseQuery.getQuery(GEMPACK_PACK);
+        query.whereEqualTo(PACK_STATUS, "PACK_1");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(final List<ParseObject> objects, ParseException e) {
+                new ParseExceptionHandler(context).processPotentialParseExceptions(e, "loading gems", new ParseExceptionHandler.ExceptionCallback() {
+                    @Override
+                    public void doFirst() {
+
+                    }
+
+                    @Override
+                    public void retryLastStep() {
+                        getPacksFromParse(context, callback);
+                    }
+
+                    @Override
+                    public void abortLastStep() {
+                        callback.somethingWentWrong();
+                    }
+
+                    @Override
+                    public void ranSuccessfully() {
+
+                        ArrayList<GempackPack> listOfPacks = new ArrayList<>();
+                        for (ParseObject parseObject : objects) {
+                            GempackPack pack = GempackPack.constructGempackPack(parseObject, true);
+                            listOfPacks.add(pack);
+                        }
+
+                        callback.successfullyGetPacks(listOfPacks);
                     }
 
                     @Override

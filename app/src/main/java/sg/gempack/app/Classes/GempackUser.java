@@ -154,7 +154,7 @@ public class GempackUser implements Parcelable {
                                         })
                                         .create().show();
 
-                            } else if (!jsonObject.has("email")){
+                            } /*else if (!jsonObject.has("email")){
 
                                 new AlertDialog.Builder(context)
                                         .setTitle("Missing Email Address")
@@ -173,7 +173,7 @@ public class GempackUser implements Parcelable {
                                         })
                                         .create().show();
 
-                            } else {
+                            } */else {
 
                                 try {
 

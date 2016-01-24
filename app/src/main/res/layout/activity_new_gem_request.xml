@@ -8,17 +8,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="sg.gempack.app.NewGemRequestActivity">
+
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:layout_marginTop="16sp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +45,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,7 +80,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +108,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,7 +135,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,17 +163,13 @@
             android:layout_marginTop="10dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|center_horizontal|center_vertical">
+            android:gravity="center|center_horizontal|center_vertical"
+            android:layout_margin="16sp">
         </DatePicker>
-        <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"/>
 
         <Button
             android:id="@+id/submitBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/select_submit" />

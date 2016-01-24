@@ -21,8 +21,8 @@ public class PushNotificationManagement {
     }
     public void associateUserToParseInstallation(final Context context, final onSettingPushInstallationCallback callback){
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("user", GempackApplication.getMainGempackUser());
-        if (GempackApplication.getMainGempackUser() != null) installation.put(GempackUser.getParseUserCode(), GempackApplication.getMainGempackUser());
+        installation.put("user", GempackApplication.getMainGempackUser().getParseUser());
+        if (GempackApplication.getMainGempackUser() != null) installation.put(GempackUser.getParseUserCode(), GempackApplication.getMainGempackUser().getParseUser());
 
         installation.saveInBackground(new SaveCallback() {
             @Override
@@ -61,7 +61,6 @@ public class PushNotificationManagement {
     public void uninstallPushFromParseInstallation(final Context context, final onSettingPushInstallationCallback callback){
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
         installation.put("user", ParseUser.createWithoutData(ParseUser.class, "0"));
-        installation.put("userPublic", ParseUser.createWithoutData("otterUser", "0"));
         installation.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

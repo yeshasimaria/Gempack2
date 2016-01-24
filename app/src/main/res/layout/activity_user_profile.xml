@@ -17,13 +17,10 @@
         android:orientation="vertical"
         tools:context=".LinearLayout">
 
-        <TextView
+        <include
+            layout="@layout/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:paddingTop="11dp"
-            android:text="@string/bar_placeholder"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="fill_parent"

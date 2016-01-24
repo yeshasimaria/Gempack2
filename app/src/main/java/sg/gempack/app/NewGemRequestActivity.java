@@ -27,17 +27,12 @@ public class NewGemRequestActivity extends AppCompatActivity {
     Context context;
     private EditText meetingPt, amt, benefits, description;
     private DatePicker datePicker;
-    private TimePicker timePicker;
     private DateTime date;
     private Button next;
 
     private GempackPack GMPP;
     //TODO: remove method
-    public static void openNewGemActivity(Context context){
-        Intent startNewGemScreenIntent = new Intent(context, NewGemRequestActivity.class);
-        context.startActivity(startNewGemScreenIntent);
-        ((Activity)context).finish();
-    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_gem_request);
@@ -85,14 +80,16 @@ public class NewGemRequestActivity extends AppCompatActivity {
 
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-        Log.d("NewGem", (String.valueOf(datePicker.getDayOfMonth())));
-        date = new DateTime();
-        //date = new DateTime(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth(), 0,0);
+
+
+
         next = (Button) findViewById(R.id.submitBtn);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GMPP = new GempackPack();
+
+                date = new DateTime(datePicker.getYear(),datePicker.getMonth(), datePicker.getDayOfMonth(), 0,0);
                 GMPP.savePackDetailsParse(context, meetingPt.toString(), date, Double.valueOf(amt.getText().toString()), benefits.toString(), description.toString(), "",new GempackPack.OnPackCreatedCallback() {
                     @Override
                     public void createdSuccessfully(GempackPack gempackPack) {
@@ -104,12 +101,17 @@ public class NewGemRequestActivity extends AppCompatActivity {
                         //do nothing
                     }
                 });
-                Intent myIntent = new Intent(context, GempackPack.class);
             }
         });
 
 
 
+    }
+
+    public static void openNewGemActivity(Context context){
+        Intent startNewGemScreenIntent = new Intent(context, NewGemRequestActivity.class);
+        context.startActivity(startNewGemScreenIntent);
+        ((Activity)context).finish();
     }
 
 }

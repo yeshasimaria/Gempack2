@@ -53,15 +53,22 @@
             android:name=".LogInScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".GempackFeedActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".NewGemRequestActivity" />
+
+        <activity android:name=".NewGemRequestActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
         <activity
             android:name=".PackDetailsActivity"
             android:label="@string/title_activity_pack_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
