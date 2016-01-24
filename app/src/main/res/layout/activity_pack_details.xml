@@ -14,11 +14,18 @@
         android:layout_height="wrap_content"/>
 
     <sg.gempack.app.Cards.PackDetailsCard
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pack_details_card">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/pack_details_card">
 
     </sg.gempack.app.Cards.PackDetailsCard>
+
+    <sg.gempack.app.Cards.OwnerDetailsCard
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/owner_details_card">
+
+    </sg.gempack.app.Cards.OwnerDetailsCard>
 
     <Button
         android:layout_width="match_parent"

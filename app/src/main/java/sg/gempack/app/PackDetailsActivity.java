@@ -9,12 +9,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import sg.gempack.app.Cards.OwnerDetailsCard;
 import sg.gempack.app.Cards.PackDetailsCard;
 import sg.gempack.app.Classes.GempackPack;
 
 public class PackDetailsActivity extends AppCompatActivity {
     GempackPack gempackPack;
     PackDetailsCard packDetailsCard;
+    OwnerDetailsCard ownerDetailsCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,9 @@ public class PackDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gempackPack = getIntent().getParcelableExtra(GempackPack.getGempackPackCode());
         packDetailsCard = (PackDetailsCard) findViewById(R.id.pack_details_card);
+        ownerDetailsCard = (OwnerDetailsCard) findViewById(R.id.owner_details_card);
         packDetailsCard.update(gempackPack);
+        ownerDetailsCard.update(gempackPack.getPackOwner());
 
     }
 
