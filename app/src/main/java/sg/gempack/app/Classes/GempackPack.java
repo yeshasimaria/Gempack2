@@ -56,22 +56,23 @@ public class GempackPack implements Parcelable{
     }
 
     private GempackPack(ParseObject packObject){
-        this.gempackPackParseObject = packObject;
-        this.gempackPackID = packOwnerID;
-
         gempackPackParseObject = packObject;
-        gempackPackID = packObject.getObjectId();
-        packOwner = GempackUser.constructGempackUser(packObject.getParseUser(OWNER_PARSE_OBJECT), true);
-        packOwnerID = packOwner.getParseUserID();
-        collectionPoint = packObject.getString(COLLECTION_POINT);
-        deadlineTime = new DateTime(packObject.getLong(DEADLINE_TIME));
-        requiredAmount = packObject.getDouble(REQUIRED_AMOUNT);
-        createdTime = new DateTime(packObject.getCreatedAt());
-        benefitsText = packObject.getString(BENEFITS_TEXT);
-        descriptionText = packObject.getString(DESCRIPTIONS_TEXT);
-        vendorName = packObject.getString(VENDOR_NAME);
-        packStatus = packObject.getString(PACK_STATUS);
-        collectedAmount = packObject.getDouble(COLLECTED_AMOUNT);
+
+        if(packObject.isDataAvailable()){
+            gempackPackID = packObject.getObjectId();
+            packOwner = GempackUser.constructGempackUser(packObject.getParseUser(OWNER_PARSE_OBJECT), true);
+            packOwnerID = packOwner.getParseUserID();
+            collectionPoint = packObject.getString(COLLECTION_POINT);
+            deadlineTime = new DateTime(packObject.getLong(DEADLINE_TIME));
+            requiredAmount = packObject.getDouble(REQUIRED_AMOUNT);
+            createdTime = new DateTime(packObject.getCreatedAt());
+            benefitsText = packObject.getString(BENEFITS_TEXT);
+            descriptionText = packObject.getString(DESCRIPTIONS_TEXT);
+            vendorName = packObject.getString(VENDOR_NAME);
+            packStatus = packObject.getString(PACK_STATUS);
+            collectedAmount = packObject.getDouble(COLLECTED_AMOUNT);
+        }
+
     }
 
 

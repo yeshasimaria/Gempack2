@@ -2,6 +2,7 @@ package sg.gempack.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +26,12 @@ public class PackDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Pack Details");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.gempack_brown_dark));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.gempack_brown_dark));
+        }
+
         gempackPack = getIntent().getParcelableExtra(GempackPack.getGempackPackCode());
         packDetailsCard = (PackDetailsCard) findViewById(R.id.pack_details_card);
         packDetailsCard.update(gempackPack);
@@ -38,8 +45,9 @@ public class PackDetailsActivity extends AppCompatActivity {
 
         return super.onPrepareOptionsMenu(menu);
     }
-    public static void openPackDetailsActivity(Context context){
+    public static void openPackDetailsActivity(Context context, GempackPack pack){
         Intent intent = new Intent(context, PackDetailsActivity.class);
+        intent.putExtra(GempackPack.getGempackPackCode(), pack);
         context.startActivity(intent);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -51,9 +59,6 @@ public class PackDetailsActivity extends AppCompatActivity {
         }
         if (id == R.id.action_refresh) {
             //TODO: Refresh
-        }
-        if (id == R.id.action_addgem) {
-            AddGemActivity.openAddGemActivity(this, gempackPack);
         }
 
 

@@ -79,7 +79,7 @@ public class GempackGem {
         if(name!=null) gemParseObject.put(PRODUCT_NAME, name);
         if(code!=null) gemParseObject.put(PRODUCT_CODE, code);
         if(price!=null) gemParseObject.put(PRODUCT_PRICE, price);
-        if(pack!=null) gemParseObject.put(ROOT_PACK, pack.getGempackPackParseObject());
+        gemParseObject.put(ROOT_PACK, ParseObject.createWithoutData(GempackPack.getGempackPackCode(), pack.getGempackPackID()));
         if (!gemParseObject.has(PRODUCT_OWNER)) gemParseObject.put(PRODUCT_OWNER, ParseUser.getCurrentUser());
 
         gemParseObject.setACL(ParseACLHelper.setParseObjectPermissions());
@@ -109,16 +109,26 @@ public class GempackGem {
                         gemParseID = gemParseObject.getObjectId();
                         if(name!=null) productName = name;
                         if(code!=null) productCode = code;
-                        if(pack!=null){
-                            rootPack = pack;
-                            packID = pack.getGempackPackID();
-                        }
-                        if(price!=null) {
-                            rootPack.addCollectedAmountToParse(price);
-                            productPrice = price;
-                        }
                         gemOwner = GempackApplication.getMainGempackUser();
-                        callback.successfullySaved(GempackGem.this);
+                        rootPack = GempackPack.constructGempackPack(ParseObject.createWithoutData(GempackPack.getGempackPackCode(), pack.getGempackPackID()));
+                        if(price!=null) {
+                            productPrice = price;
+
+                            rootPack.loadPackDetailsFromParse(context, true, null, new GempackPack.PackDetailsLoadedCallback() {
+                                @Override
+                                public void loadedSuccessfully(ParseObject packObject) {
+                                    rootPack.addCollectedAmountToParse(price);
+                                    callback.successfullySaved(GempackGem.this);
+                                }
+
+                                @Override
+                                public void somethingWentWrong() {
+                                    callback.somethingWentWrong();
+                                }
+                            });
+
+                        }
+
                     }
 
                     @Override
