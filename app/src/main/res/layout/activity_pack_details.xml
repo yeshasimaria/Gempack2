@@ -27,8 +27,9 @@
         android:text="ADD YOUR GEM"
         android:textSize="30sp"
         android:textAlignment="center"
-        android:padding="10dp"
-        android:background="@color/dark_grey"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:background="@color/gempack_brown"
         android:onClick="addGem"
         />
 

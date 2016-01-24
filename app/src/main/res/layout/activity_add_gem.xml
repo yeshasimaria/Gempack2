@@ -98,8 +98,9 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="30sp"
-            android:padding="10dp"
-            android:background="@color/dark_grey"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:background="@color/gempack_brown"
             android:text="@string/gem_submit" />
     </LinearLayout>
 </ScrollView>
