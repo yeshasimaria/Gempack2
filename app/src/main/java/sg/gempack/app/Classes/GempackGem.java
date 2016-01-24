@@ -11,8 +11,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import org.joda.time.DateTime;
-
 import sg.gempack.app.GempackApplication;
 import sg.gempack.app.Utilities.ParseACLHelper;
 import sg.gempack.app.Utilities.ParseExceptionHandler;
@@ -168,7 +166,7 @@ public class GempackGem {
                         productCode = object.getString(PRODUCT_CODE);
                         productPrice = object.getDouble(PRODUCT_PRICE);
 
-                        rootPack = GempackPack.constructGempackPack(object.getParseObject(ROOT_PACK), true);
+                        rootPack = GempackPack.constructGempackPack(object.getParseObject(ROOT_PACK));
                         packID = rootPack.getGempackPackID();
 
                         gemOwner = new GempackUser(object.getParseUser(PRODUCT_OWNER));

@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -50,13 +51,27 @@ public class GempackPack implements Parcelable{
         gempackPackParseObject = new ParseObject(GEMPACK_PACK);
     }
 
-    public static GempackPack constructGempackPack (ParseObject packObject, Boolean skipCache){
+    public static GempackPack constructGempackPack(ParseObject packObject){
         return new GempackPack(packObject);
     }
 
     private GempackPack(ParseObject packObject){
         this.gempackPackParseObject = packObject;
         this.gempackPackID = packOwnerID;
+
+        gempackPackParseObject = packObject;
+        gempackPackID = packObject.getObjectId();
+        packOwner = GempackUser.constructGempackUser(packObject.getParseUser(OWNER_PARSE_OBJECT), true);
+        packOwnerID = packOwner.getParseUserID();
+        collectionPoint = packObject.getString(COLLECTION_POINT);
+        deadlineTime = new DateTime(packObject.getLong(DEADLINE_TIME));
+        requiredAmount = packObject.getDouble(REQUIRED_AMOUNT);
+        createdTime = new DateTime(packObject.getCreatedAt());
+        benefitsText = packObject.getString(BENEFITS_TEXT);
+        descriptionText = packObject.getString(DESCRIPTIONS_TEXT);
+        vendorName = packObject.getString(VENDOR_NAME);
+        packStatus = packObject.getString(PACK_STATUS);
+        collectedAmount = packObject.getDouble(COLLECTED_AMOUNT);
     }
 
 
@@ -128,6 +143,7 @@ public class GempackPack implements Parcelable{
         if (benefitsText != null) gempackPackParseObject.put(BENEFITS_TEXT, benefitsText);
         if (descriptionText != null) gempackPackParseObject.put(DESCRIPTIONS_TEXT, descriptionText);
         if (gempackVendor != null) gempackPackParseObject.put(VENDOR_NAME, gempackVendor);
+        gempackPackParseObject.put(COLLECTED_AMOUNT, 0.0);
         gempackPackParseObject.put(PACK_STATUS, "PACK_1");
         gempackPackParseObject.setACL(ParseACLHelper.setParseObjectPermissions());
 
@@ -332,7 +348,7 @@ public class GempackPack implements Parcelable{
 
                         ArrayList<GempackPack> listOfPacks = new ArrayList<>();
                         for (ParseObject parseObject : objects) {
-                            GempackPack pack = GempackPack.constructGempackPack(parseObject, true);
+                            GempackPack pack = GempackPack.constructGempackPack(parseObject);
                             listOfPacks.add(pack);
                         }
 
@@ -403,6 +419,7 @@ public class GempackPack implements Parcelable{
 
     public Double getRemainingAmount(){
 
+        Log.d("PACK", String.valueOf(requiredAmount) + " " + String.valueOf(collectedAmount));
         Double remainingAmount = requiredAmount - collectedAmount;
 
         if (remainingAmount < 0.0){
