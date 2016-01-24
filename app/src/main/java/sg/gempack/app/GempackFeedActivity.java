@@ -53,7 +53,6 @@ public class GempackFeedActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             getWindow().setStatusBarColor(getResources().getColor(R.color.gempack_brown_dark));
             getWindow().setNavigationBarColor(getResources().getColor(R.color.gempack_brown_dark));
-
         }
 
 
@@ -112,6 +111,9 @@ public class GempackFeedActivity extends AppCompatActivity {
         }
         if (id == R.id.action_myprofile) {
             UserProfileActivity.openUserProfileActivity(this);
+        }
+        if (id == R.id.action_refresh) {
+            //TODO: Refresh
         }
 
 

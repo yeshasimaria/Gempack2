@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".PackDetailsActivity">
+    tools:context=".PackDetailsActivity"
+    android:orientation="vertical">
 
     <include
         layout="@layout/toolbar"
@@ -13,11 +14,30 @@
         android:layout_height="wrap_content"/>
 
     <sg.gempack.app.Cards.PackDetailsCard
-        android:layout_marginTop="@dimen/app_bar_height"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/pack_details_card">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/pack_details_card">
 
     </sg.gempack.app.Cards.PackDetailsCard>
 
-</android.support.design.widget.CoordinatorLayout>
+    <sg.gempack.app.Cards.OwnerDetailsCard
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/owner_details_card">
+
+    </sg.gempack.app.Cards.OwnerDetailsCard>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="ADD YOUR GEM"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:background="@color/gempack_brown"
+        android:onClick="addGem"
+        />
+
+</LinearLayout>

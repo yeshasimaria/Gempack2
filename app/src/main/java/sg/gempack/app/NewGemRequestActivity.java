@@ -1,10 +1,10 @@
 package sg.gempack.app;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -47,9 +47,14 @@ public class NewGemRequestActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.gempack_toolbar);
         setSupportActionBar(toolbar);
 
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.gempack_brown_dark));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.gempack_brown_dark));
+        }
+
         context = this.getApplicationContext();
         // Spinner element
-         spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
         meetingPt = (EditText) findViewById(R.id.editmeeting);
         amt = (EditText) findViewById(R.id.editamount);
         description = (EditText) findViewById(R.id.editdescription);
@@ -121,7 +126,7 @@ public class NewGemRequestActivity extends AppCompatActivity {
                 GMPP.savePackDetailsParse(NewGemRequestActivity.this, meet, date, price, benefitString, descript, vendor,new GempackPack.OnPackCreatedCallback() {
                     @Override
                     public void createdSuccessfully(GempackPack gempackPack) {
-                        AddGemActivity.openAddGemActivity(NewGemRequestActivity.this, GMPP);
+                        AddGemActivity.openAddGemActivity(NewGemRequestActivity.this, gempackPack);
                     }
 
                     @Override

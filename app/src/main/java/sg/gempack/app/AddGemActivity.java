@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import sg.gempack.app.Classes.GempackGem;
 import sg.gempack.app.Classes.GempackPack;
@@ -37,8 +39,10 @@ public class AddGemActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        if (intent.hasExtra(GempackPack.getGempackPackCode())) GMPG = intent.getParcelableExtra(GempackPack.getGempackPackCode());
-
+        if (intent.hasExtra(GempackPack.getGempackPackCode())) pack = intent.getParcelableExtra(GempackPack.getGempackPackCode());
+        else{
+            Toast.makeText(this, "Pack information missing.", Toast.LENGTH_LONG).show();
+        }
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         amt = (EditText) findViewById(R.id.gemAmt);
@@ -52,7 +56,7 @@ public class AddGemActivity extends AppCompatActivity {
                 productNameS = productName.getText().toString();
                 productCodeS = productCode.getText().toString();
                 double price = Double.parseDouble(amt.getText().toString());
-                //TODO: Retrive GempackPack and callback
+                Log.d("NewGem1", amt.getText().toString());
                 GMPG.saveGemToParse(AddGemActivity.this, productNameS, productCodeS, price,
                         pack, new GempackGem.SaveGemToParseCallback() {
                             @Override
@@ -83,14 +87,12 @@ public class AddGemActivity extends AppCompatActivity {
             finish();
         }
 
-
         return super.onOptionsItemSelected(item);
     }
     public static void openAddGemActivity(Context context, GempackPack pack){
         Intent startNewGemScreenIntent = new Intent(context, AddGemActivity.class);
         startNewGemScreenIntent.putExtra(GempackPack.getGempackPackCode(), pack);
         context.startActivity(startNewGemScreenIntent);
-        ((Activity)context).finish();
     }
 
 }

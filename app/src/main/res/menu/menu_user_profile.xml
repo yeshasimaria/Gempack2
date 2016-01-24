@@ -2,21 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="sg.gempack.app.UserProfileActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="400"
         android:title="Logout"
+        android:icon="@drawable/ic_action_cancel"
         app:showAsAction="always"
         ></item>
     <item
         android:id="@+id/action_addpack"
         android:orderInCategory="300"
         android:title="NEW PACK"
+        android:icon="@drawable/ic_action_add_to_queue"
         app:showAsAction="always" />
 
     <item
@@ -24,5 +22,6 @@
         android:orderInCategory="100"
         android:title="Feed"
         app:showAsAction="always"
+        android:icon="@drawable/ic_action_view_as_list"
         ></item>
 </menu>
