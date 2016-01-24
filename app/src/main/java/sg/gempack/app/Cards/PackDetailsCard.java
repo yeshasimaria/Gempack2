@@ -37,7 +37,7 @@ public class PackDetailsCard extends CardView {
 
     private void init(Context context) {
         this.context = context;
-        LayoutInflater.from(getContext()).inflate(R.layout.card_gempackpack, this, true);
+        LayoutInflater.from(getContext()).inflate(R.layout.card_packdetails, this, true);
         remainingAmount = (TextView) findViewById(R.id.remaining_amount);
         endDate = (TextView) findViewById(R.id.end_date);
         vendor = (TextView) findViewById(R.id.vendor_name);
@@ -53,8 +53,8 @@ public class PackDetailsCard extends CardView {
     }
 
     private void update() {
-        //TODO
-        //add vendor
+        //TODO add photo
+        vendor.setText(gempackPack.getVendorName());
         remainingAmount.setText(String.format("%.2f", gempackPack.getRemainingAmount()));
         endDate.setText(gempackPack.getStringForDate(gempackPack.getDeadlineTime()));
         collectionPoint.setText(gempackPack.getCollectionPoint());
