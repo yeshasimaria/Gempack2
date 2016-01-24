@@ -22,7 +22,7 @@ public class PackDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pack_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.gempack_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("New Pack");
+        getSupportActionBar().setTitle("Pack Details");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gempackPack = getIntent().getParcelableExtra(GempackPack.getGempackPackCode());
@@ -34,7 +34,7 @@ public class PackDetailsActivity extends AppCompatActivity {
 
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        getMenuInflater().inflate(R.menu.menu_gem_activity, menu);
+        getMenuInflater().inflate(R.menu.menu_details, menu);
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -49,6 +49,13 @@ public class PackDetailsActivity extends AppCompatActivity {
         if (id == android.R.id.home) {
             finish();
         }
+        if (id == R.id.action_refresh) {
+            //TODO: Refresh
+        }
+        if (id == R.id.action_addgem) {
+            AddGemActivity.openAddGemActivity(this, gempackPack);
+        }
+
 
 
         return super.onOptionsItemSelected(item);

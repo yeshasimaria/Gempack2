@@ -113,6 +113,9 @@ public class GempackFeedActivity extends AppCompatActivity {
         if (id == R.id.action_myprofile) {
             UserProfileActivity.openUserProfileActivity(this);
         }
+        if (id == R.id.action_refresh) {
+            //TODO: Refresh
+        }
 
 
 

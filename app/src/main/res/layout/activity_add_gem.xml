@@ -14,7 +14,10 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="sg.gempack.app.NewGemRequestActivity">
 
-
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -39,13 +42,6 @@
                 android:ems="10"
                 android:inputType="numberDecimal" />
 
-            <EditText
-                android:id="@+id/editamount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20px"
-                android:layout_weight="0.50"
-                android:paddingTop="20px" />
         </LinearLayout>
 
         <LinearLayout

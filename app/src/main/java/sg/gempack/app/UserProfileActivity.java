@@ -49,6 +49,10 @@ public class UserProfileActivity extends AppCompatActivity {
         if (id == R.id.action_addpack) {
             NewGemRequestActivity.openNewGemActivity(this);
         }
+        if (id == R.id.action_logout) {
+            //TODO: Logout
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
