@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,6 +35,8 @@ public class NewGemRequestActivity extends AppCompatActivity {
     private TimePicker timePicker;
     private DateTime date;
     private Button next;
+    Toolbar toolbar;
+
 
     private GempackPack GMPP;
     //TODO: remove method
@@ -39,6 +44,9 @@ public class NewGemRequestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_gem_request);
+        toolbar = (Toolbar) findViewById(R.id.gempack_toolbar);
+        setSupportActionBar(toolbar);
+
         context = this.getApplicationContext();
         // Spinner element
          spinner = (Spinner) findViewById(R.id.spinner);
@@ -48,6 +56,9 @@ public class NewGemRequestActivity extends AppCompatActivity {
         benefits= (EditText) findViewById(R.id.editbenefits);
         datePicker =  (DatePicker) findViewById(R.id.datePicker);
 
+        getSupportActionBar().setTitle("New Pack");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         date = new DateTime();
         //date = new DateTime(1995,01, 01, 23,59);
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {
@@ -64,6 +75,8 @@ public class NewGemRequestActivity extends AppCompatActivity {
 
             }
         };
+
+
         // Spinner click listener
         spinner.setOnItemSelectedListener(listener);
 
@@ -99,6 +112,7 @@ public class NewGemRequestActivity extends AppCompatActivity {
                 Log.d("NewGem1", meetingPt.getText().toString());
                 Log.d("NewGem2", benefits.getText().toString());
                 Log.d("NewGem3", amt.getText().toString());
+
                 double price = Double.parseDouble(amt.getText().toString());
 
                 meet = meetingPt.getText().toString();
@@ -123,11 +137,27 @@ public class NewGemRequestActivity extends AppCompatActivity {
 
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+
+        if (id == android.R.id.home) {
+            finish();
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        getMenuInflater().inflate(R.menu.menu_gem_activity, menu);
+
+        return super.onPrepareOptionsMenu(menu);
+    }
     public static void openNewGemActivity(Context context){
         Intent startNewGemScreenIntent = new Intent(context, NewGemRequestActivity.class);
-
         context.startActivity(startNewGemScreenIntent);
-        ((Activity)context).finish();
+
     }
 
 }
