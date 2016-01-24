@@ -107,7 +107,7 @@ public class NewGemRequestActivity extends AppCompatActivity {
                 GMPP.savePackDetailsParse(NewGemRequestActivity.this, meet, date, price, benefitString, descript, vendor,new GempackPack.OnPackCreatedCallback() {
                     @Override
                     public void createdSuccessfully(GempackPack gempackPack) {
-                        //TODO: CreateGem
+                        AddGemActivity.openAddGemActivity(NewGemRequestActivity.this, GMPP);
                     }
 
                     @Override
@@ -125,6 +125,7 @@ public class NewGemRequestActivity extends AppCompatActivity {
 
     public static void openNewGemActivity(Context context){
         Intent startNewGemScreenIntent = new Intent(context, NewGemRequestActivity.class);
+
         context.startActivity(startNewGemScreenIntent);
         ((Activity)context).finish();
     }
