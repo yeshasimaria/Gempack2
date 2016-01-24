@@ -3,6 +3,7 @@ package sg.gempack.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -38,6 +39,12 @@ public class AddGemActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Add Gem");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.gempack_brown_dark));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.gempack_brown_dark));
+        }
+
         Intent intent = getIntent();
         if (intent.hasExtra(GempackPack.getGempackPackCode())) pack = intent.getParcelableExtra(GempackPack.getGempackPackCode());
         else{

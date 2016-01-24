@@ -3,6 +3,7 @@ package sg.gempack.app.Cards;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -60,7 +61,8 @@ public class PackDetailsCard extends CardView {
         collectionPoint.setText(gempackPack.getCollectionPoint());
         description.setText(gempackPack.getDescriptionText());
         benefits.setText(gempackPack.getBenefitsText());
-        progressBar.setProgress((int)(gempackPack.getCollectedAmount()/gempackPack.getRequiredAmount()));
+        Log.d("PROGRESS", String.valueOf(Math.round(gempackPack.getCollectedAmount()/gempackPack.getRequiredAmount()) * 100));
+        progressBar.setProgress((int) (Math.round(gempackPack.getCollectedAmount()/gempackPack.getRequiredAmount() * 100)));
     }
 
     public GempackPack getPack() {

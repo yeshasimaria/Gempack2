@@ -45,8 +45,9 @@ public class OwnerDetailsCard extends CardView {
     }
 
     private void update() {
-        owner_name.setText(gempackUser.getFullName());
-        owner_email.setText(gempackUser.getEmailAddress());
+        owner_name.setText("Alex Wong");
+        owner_email.setText("alexwonglovezalora@gmail.com");
+
     }
 
     public GempackUser getPack() {

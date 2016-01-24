@@ -63,7 +63,7 @@ public class PackDetailsActivity extends AppCompatActivity {
         if (id == R.id.action_refresh) {
             //TODO: Refresh
         }
-        }
+
 
 
 
