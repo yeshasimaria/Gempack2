@@ -55,7 +55,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".GempackFeedActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".UserProfileActivity"
@@ -63,7 +63,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".NewGemRequestActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
             android:name=".PackDetailsActivity"

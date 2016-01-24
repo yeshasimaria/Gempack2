@@ -8,8 +8,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
+
+import sg.gempack.app.Classes.GempackUser;
+import sg.gempack.app.Utilities.ParseExceptionHandler;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -31,7 +37,24 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 //If the user is logged in
                 if (ParseUser.getCurrentUser() != null && ParseFacebookUtils.isLinked(ParseUser.getCurrentUser())){
-                    GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
+
+                    if (ParseUser.getCurrentUser().isDataAvailable()) {
+                        GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
+                    } else {
+
+
+                        GempackApplication.getMainGempackUser().loadParseUserInformation(SplashScreenActivity.this, new GempackUser.LoadUserInfoCallback() {
+                            @Override
+                            public void onLoadedSuccessfully() {
+                                GempackFeedActivity.openGempackFeedActivity(SplashScreenActivity.this);
+                            }
+
+                            @Override
+                            public void somethingWentWrong() {
+                                LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);
+                            }
+                        });
+                    }
 
                 } else {
                     LogInScreenActivity.openLogInActivity(SplashScreenActivity.this);

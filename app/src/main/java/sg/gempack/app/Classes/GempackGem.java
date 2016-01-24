@@ -51,7 +51,7 @@ public class GempackGem {
         gemParseObject = parseObject;
         gemParseID = parseObject.getObjectId();
 
-        gemOwner = GempackUser.constructGempackUser(parseObject.getParseUser(PRODUCT_OWNER), true);
+        gemOwner = GempackUser.constructGempackUser(parseObject.getParseUser(PRODUCT_OWNER));
         ownerID = gemOwner.getParseUserID();
 
         productName = parseObject.getString(PRODUCT_NAME);
@@ -172,7 +172,7 @@ public class GempackGem {
 
                         gemParseObject = object;
                         gemParseID = object.getObjectId();
-                        gemOwner = GempackUser.constructGempackUser(object.getParseUser(PRODUCT_OWNER), true);
+                        gemOwner = GempackUser.constructGempackUser(object.getParseUser(PRODUCT_OWNER));
                         ownerID = gemOwner.getParseUserID();
 
                         productName = object.getString(PRODUCT_NAME);

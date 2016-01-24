@@ -21,7 +21,9 @@ import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.parse.GetCallback;
 import com.parse.ParseACL;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -59,37 +61,13 @@ public class GempackUser implements Parcelable {
 
 
     //CONSTRUCTORS
-    public static GempackUser constructGempackUser(ParseUser parseUser, Boolean skipCache){
-        if(skipCache){
-            return new GempackUser(parseUser);
-        } else {
-            GempackUser user = GempackApplication.getGempackUserLruCache().get(parseUser.getObjectId());
-            if (user == null){
-                try {
-                    if (Reservoir.contains(GEMPACK_USER + parseUser.getObjectId())){
-                        user = Reservoir.get(GEMPACK_USER + parseUser.getObjectId(), GempackUser.class);
-                    } else {
-                        user = new GempackUser(parseUser);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    user = new GempackUser(parseUser);
-                }
-
-            }
-
-            return user;
-        }
+    public static GempackUser constructGempackUser(ParseUser parseUser){
+        return new GempackUser(parseUser);
     }
 
 
     public GempackUser(ParseUser parseUser){
         extractParseUserInformation(parseUser);
-    }
-
-
-    public GempackUser(String parseUserID){
-        this.parseUserID = parseUserID;
     }
 
 
@@ -280,6 +258,56 @@ public class GempackUser implements Parcelable {
         if (parseUser.has(FACEBOOK_VERIFIED)) this.facebookVerified = parseUser.getBoolean(FACEBOOK_VERIFIED);
     }
 
+
+
+    public interface LoadUserInfoCallback{
+        void onLoadedSuccessfully();
+        void somethingWentWrong();
+    }
+    public void loadParseUserInformation(final Context context, final LoadUserInfoCallback callback){
+
+        final Dialog loadingDialog = ProgressDialog.show(context, null, "Loading...", true);
+
+        ParseQuery<ParseUser> query = new ParseQuery<>(ParseUser.class);
+        query.getInBackground(parseUser.getObjectId(), new GetCallback<ParseUser>() {
+            @Override
+            public void done(final ParseUser object, ParseException e) {
+
+                new ParseExceptionHandler(context).processPotentialParseExceptions(e, "loading user information", new ParseExceptionHandler.ExceptionCallback() {
+                    @Override
+                    public void doFirst() {
+                        loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void retryLastStep() {
+                        loadParseUserInformation(context, callback);
+                    }
+
+                    @Override
+                    public void abortLastStep() {
+                        callback.somethingWentWrong();
+                    }
+
+                    @Override
+                    public void ranSuccessfully() {
+                        extractParseUserInformation(object);
+                        callback.onLoadedSuccessfully();
+                    }
+
+                    @Override
+                    public void finallyDo() {
+
+                    }
+                });
+
+            }
+        });
+    }
+
+
+
+
     public void savePhoneNumberAndEmail(Context context){
         //TODO
     }
@@ -356,6 +384,8 @@ public class GempackUser implements Parcelable {
             }
         });
     }
+
+
 
 
 

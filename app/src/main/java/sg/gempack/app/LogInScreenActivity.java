@@ -121,7 +121,20 @@ public class LogInScreenActivity extends AppCompatActivity {
 
                             @Override
                             public void noNeedToSave() {
-                                pushNotificationManagement.associateUserToParseInstallation(LogInScreenActivity.this, callback);
+
+                                GempackApplication.getMainGempackUser().loadParseUserInformation(LogInScreenActivity.this, new GempackUser.LoadUserInfoCallback() {
+                                    @Override
+                                    public void onLoadedSuccessfully() {
+                                        pushNotificationManagement.associateUserToParseInstallation(LogInScreenActivity.this, callback);
+                                    }
+
+                                    @Override
+                                    public void somethingWentWrong() {
+                                        //do nothing
+                                    }
+                                });
+
+
                             }
 
                             @Override

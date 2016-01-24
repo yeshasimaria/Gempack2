@@ -61,7 +61,7 @@ public class GempackPack implements Parcelable{
 
         gempackPackParseObject = packObject;
         gempackPackID = packObject.getObjectId();
-        packOwner = GempackUser.constructGempackUser(packObject.getParseUser(OWNER_PARSE_OBJECT), true);
+        packOwner = GempackUser.constructGempackUser(packObject.getParseUser(OWNER_PARSE_OBJECT));
         packOwnerID = packOwner.getParseUserID();
         collectionPoint = packObject.getString(COLLECTION_POINT);
         deadlineTime = new DateTime(packObject.getLong(DEADLINE_TIME));
@@ -244,7 +244,7 @@ public class GempackPack implements Parcelable{
 
                         gempackPackParseObject = object;
                         gempackPackID = object.getObjectId();
-                        packOwner = GempackUser.constructGempackUser(object.getParseUser(OWNER_PARSE_OBJECT), true);
+                        packOwner = GempackUser.constructGempackUser(object.getParseUser(OWNER_PARSE_OBJECT));
                         packOwnerID = packOwner.getParseUserID();
                         collectionPoint = object.getString(COLLECTION_POINT);
                         deadlineTime = new DateTime(object.getLong(DEADLINE_TIME));

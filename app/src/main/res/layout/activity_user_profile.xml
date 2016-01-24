@@ -6,87 +6,131 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="sg.gempack.app.UserProfileActivity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".LinearLayout">
+        android:layout_height="match_parent">
 
-        <include
-            layout="@layout/toolbar"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".LinearLayout">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10dp">
+            <include
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="16sp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profile_picture"
+                        android:layout_width="250sp"
+                        android:layout_height="250sp"
+                        android:adjustViewBounds="false"
+                        android:src="@drawable/gempack_wireframe" />
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="8sp"
+                        android:text="Name Of User"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/black" />
+
+            TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_requests"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:gravity="center"
-                android:layout_margin="16sp">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/gempack_wireframe" />
+                android:orientation="horizontal"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:text="@string/profile_name"
+                    android:text="Phone:"
+                    android:textAlignment="center"
                     android:textSize="20sp" />
 
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:id="@+id/profile_phone_edittext"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"
-                    android:paddingTop="5dp"
                     android:text="@string/email_name"
-                    android:textSize="15sp" />
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/profile_email_edittext"
+                    android:layout_weight="1" />
             </LinearLayout>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="20px"
+                android:paddingTop="10px"
+                android:text="SAVE" />
 
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/black" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/profile_requests"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingLeft="20px"
-            android:paddingTop="10px"
-            android:text="BUTTON" />
-
-
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
