@@ -2,21 +2,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="sg.gempack.app.GempackFeedActivity">
+
     <item
-        android:id="@+id/action_back"
-        android:orderInCategory="400"
-        android:title="Back"
-        app:showAsAction="always"
-        ></item>
-    <item
-        android:id="@+id/action_addpack"
+        android:id="@+id/action_addgem"
         android:orderInCategory="300"
-        android:title="NEW PACK"
+        android:title="NEW GEN"
+        android:icon="@drawable/ic_action_new"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_myprofile"
         android:orderInCategory="200"
         android:title="Profile"
+        android:icon="@drawable/ic_action_person"
         app:showAsAction="always"
         ></item>
 
@@ -24,6 +21,7 @@
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         android:title="Refresh"
+        android:icon="@drawable/ic_action_refresh"
         app:showAsAction="always"
         ></item>
 </menu>

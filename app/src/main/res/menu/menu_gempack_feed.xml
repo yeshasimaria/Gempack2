@@ -7,11 +7,13 @@
         android:id="@+id/action_addpack"
         android:orderInCategory="300"
         android:title="NEW PACK"
+        android:icon="@drawable/ic_action_add_to_queue"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_myprofile"
         android:orderInCategory="200"
         android:title="Profile"
+        android:icon="@drawable/ic_action_person"
         app:showAsAction="always"
         ></item>
 
@@ -19,6 +21,7 @@
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         android:title="Refresh"
+        android:icon="@drawable/ic_action_refresh"
         app:showAsAction="always"
         ></item>
 </menu>

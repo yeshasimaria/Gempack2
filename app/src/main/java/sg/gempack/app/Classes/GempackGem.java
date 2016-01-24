@@ -79,7 +79,7 @@ public class GempackGem {
         if(name!=null) gemParseObject.put(PRODUCT_NAME, name);
         if(code!=null) gemParseObject.put(PRODUCT_CODE, code);
         if(price!=null) gemParseObject.put(PRODUCT_PRICE, price);
-        if(pack!=null) gemParseObject.put(ROOT_PACK, pack);
+        if(pack!=null) gemParseObject.put(ROOT_PACK, pack.getGempackPackParseObject());
         if (!gemParseObject.has(PRODUCT_OWNER)) gemParseObject.put(PRODUCT_OWNER, ParseUser.getCurrentUser());
 
         gemParseObject.setACL(ParseACLHelper.setParseObjectPermissions());

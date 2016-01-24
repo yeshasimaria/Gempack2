@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,7 +38,7 @@ public class AddGemActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
-        if (intent.hasExtra(GempackPack.getGempackPackCode())) GMPG = intent.getParcelableExtra(GempackPack.getGempackPackCode());
+        if (intent.hasExtra(GempackPack.getGempackPackCode())) pack = intent.getParcelableExtra(GempackPack.getGempackPackCode());
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -52,7 +53,7 @@ public class AddGemActivity extends AppCompatActivity {
                 productNameS = productName.getText().toString();
                 productCodeS = productCode.getText().toString();
                 double price = Double.parseDouble(amt.getText().toString());
-                //TODO: Retrive GempackPack and callback
+                Log.d("NewGem1", amt.getText().toString());
                 GMPG.saveGemToParse(AddGemActivity.this, productNameS, productCodeS, price,
                         pack, new GempackGem.SaveGemToParseCallback() {
                             @Override
