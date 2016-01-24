@@ -8,88 +8,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="sg.gempack.app.NewGemRequestActivity">
 
-        <include
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:layout_marginTop="16sp"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="@string/select_vendor"
-                android:textColor="@color/black_overlay"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp">
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="11dp"
-                android:text="@string/select_amt"
+                android:text="@string/gem_amt"
                 android:textColor="@color/black_overlay"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editamount"
+                android:id="@+id/gemAmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="numberDecimal" />
 
-
+            <EditText
+                android:id="@+id/editamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_weight="0.50"
+                android:paddingTop="20px" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp">
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="11dp"
-                android:text="@string/select_meeting_pt"
+                android:text="@string/gem_name"
                 android:textColor="@color/black_overlay"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editmeeting"
+                android:id="@+id/gemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20px"
@@ -102,22 +78,20 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp">
+            android:paddingTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="11dp"
-                android:text="@string/select_benefit"
+                android:text="@string/gem_code"
                 android:textColor="@color/black_overlay"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/editbenefits"
+                android:id="@+id/gemCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20px"
@@ -125,48 +99,13 @@
                 android:paddingTop="20px" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="11dp"
-                android:text="@string/select_description"
-                android:textColor="@color/black_overlay"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editdescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20px"
-                android:layout_weight="0.50"
-                android:paddingTop="20px" />
-        </LinearLayout>
-
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_marginTop="10dp"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|center_horizontal|center_vertical"
-            android:layout_margin="16sp">
-        </DatePicker>
 
         <Button
             android:id="@+id/submitBtn"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/select_submit" />
+            android:text="@string/gem_submit" />
     </LinearLayout>
 </ScrollView>
 
