@@ -4,12 +4,6 @@
     tools:context="sg.gempack.app.GempackFeedActivity">
 
     <item
-        android:id="@+id/action_addgem"
-        android:orderInCategory="300"
-        android:title="NEW GEN"
-        android:icon="@drawable/ic_action_new"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/action_myprofile"
         android:orderInCategory="200"
         android:title="Profile"

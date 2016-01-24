@@ -29,7 +29,6 @@ public class PackDetailsActivity extends AppCompatActivity {
         packDetailsCard = (PackDetailsCard) findViewById(R.id.pack_details_card);
         packDetailsCard.update(gempackPack);
 
-
     }
 
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -52,10 +51,6 @@ public class PackDetailsActivity extends AppCompatActivity {
         if (id == R.id.action_refresh) {
             //TODO: Refresh
         }
-        if (id == R.id.action_addgem) {
-            AddGemActivity.openAddGemActivity(this, gempackPack);
-        }
-
 
 
         return super.onOptionsItemSelected(item);
