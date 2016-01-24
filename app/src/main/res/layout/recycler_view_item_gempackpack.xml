@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/gempackpack_card_item"
+    android:background="@color/dark_grey"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 </sg.gempack.app.Cards.GempackPackCard>

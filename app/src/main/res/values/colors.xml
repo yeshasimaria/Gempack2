@@ -6,8 +6,13 @@
 
     <color name="black_overlay">#66000000</color>
 
-    <color name="gempack_orange">#ff5500</color>
+    <color name="dark_grey">#e19c25</color>
+
+    <color name="gempack_brown">#fdbb11</color>
+    <color name="gempack_brown_dark">#e19c25</color>
 
     <color name="grey_translucent">#CC2F2C29</color>
     <color name="grey_transparent">#1A2F2C29</color>
+
+    <color name="transparent">#00000000</color>
 </resources>

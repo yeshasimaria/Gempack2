@@ -50,6 +50,19 @@ public class GempackGem {
     public GempackGem(ParseObject parseObject) {
         gemParseObject = parseObject;
         gemParseID = parseObject.getObjectId();
+
+        gemOwner = GempackUser.constructGempackUser(parseObject.getParseUser(PRODUCT_OWNER), true);
+        ownerID = gemOwner.getParseUserID();
+
+        productName = parseObject.getString(PRODUCT_NAME);
+        productCode = parseObject.getString(PRODUCT_CODE);
+        productPrice = parseObject.getDouble(PRODUCT_PRICE);
+
+        rootPack = GempackPack.constructGempackPack(parseObject.getParseObject(ROOT_PACK));
+        packID = rootPack.getGempackPackID();
+
+        gemOwner = new GempackUser(parseObject.getParseUser(PRODUCT_OWNER));
+        ownerID = gemOwner.getParseUserID();
     }
 
 

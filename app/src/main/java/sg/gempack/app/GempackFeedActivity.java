@@ -3,28 +3,22 @@ package sg.gempack.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 import sg.gempack.app.Adapters.GempackPackAdapter;
 import sg.gempack.app.Classes.GempackPack;
 
@@ -54,6 +48,12 @@ public class GempackFeedActivity extends AppCompatActivity {
 
         container = (RelativeLayout) findViewById(R.id.container);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.gempack_brown_dark));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.gempack_brown_dark));
+
+        }
 
 
         //View v = getLayoutInflater().inflate(R.layout.activity_gempack_feed, container, true);
@@ -131,7 +131,7 @@ public class GempackFeedActivity extends AppCompatActivity {
                             android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     })
-                    .setActionTextColor(getResources().getColor(R.color.gempack_orange))
+                    .setActionTextColor(getResources().getColor(R.color.gempack_brown))
                     .show();
             backPressedWarned = true;
 

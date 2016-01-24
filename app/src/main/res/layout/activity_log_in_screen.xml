@@ -5,7 +5,6 @@
     tools:context="sg.gempack.app.LogInScreenActivity"
     android:fitsSystemWindows="true"
     android:clipToPadding="true"
-    android:background="@drawable/gempack_login_background"
     android:id="@+id/log_in_layout">
 
     <RelativeLayout

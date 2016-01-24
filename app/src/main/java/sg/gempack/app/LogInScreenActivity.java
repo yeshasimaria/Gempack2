@@ -1,6 +1,5 @@
 package sg.gempack.app;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -14,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -44,6 +42,13 @@ public class LogInScreenActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             getWindow().setStatusBarColor(getResources().getColor(R.color.grey_translucent));
             getWindow().setNavigationBarColor(getResources().getColor(R.color.grey_translucent));
+        }
+
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.gempack_login_background));
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            getWindow().setStatusBarColor(getResources().getColor(R.color.transparent));
+            getWindow().setNavigationBarColor(getResources().getColor(R.color.transparent));
         }
 
 
@@ -181,7 +186,7 @@ public class LogInScreenActivity extends AppCompatActivity {
                             android.os.Process.killProcess(android.os.Process.myPid());
                         }
                     })
-                    .setActionTextColor(getResources().getColor(R.color.gempack_orange))
+                    .setActionTextColor(getResources().getColor(R.color.gempack_brown))
                     .show();
             backPressedWarned = true;
 

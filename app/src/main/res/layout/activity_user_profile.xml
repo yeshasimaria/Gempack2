@@ -29,16 +29,18 @@
             android:paddingTop="10dp">
 
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/gempack_wireframe" />
-
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="16sp">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/gempack_wireframe" />
 
                 <TextView
                     android:layout_width="wrap_content"
